@@ -6,7 +6,7 @@
     "@playwright/test": "^1.37.1"
   },
   "scripts": {
-    "test:a": "npx playwright test --grep @a",
-    "test:b": "npx playwright test --grep @b"
+    "test:final": "set ENV=final& npx playwright test tests --ui",
+    "test:bugs": "set ENV=bugs& npx playwright test tests --ui"
   }
 }

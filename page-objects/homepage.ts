@@ -1,4 +1,5 @@
 import {BrowserContext, Locator, TestInfo, Page, expect } from '@playwright/test';
+import config from '../playwright.config'
 
 export class Homepage {
     readonly page: Page;
@@ -22,7 +23,7 @@ export class Homepage {
     }
 
     async navigateToHomepage(): Promise<void> {
-            await this.page.goto("https://practicesoftwaretesting.com/#/");
+            await this.page.goto(`${config.baseURL}`);
     }
 
     async verifyNavigationVisibility(): Promise<void> {

@@ -1,16 +1,17 @@
 import test from './utilities/base';
+import config from '../playwright.config'
 
-test('@a Verify Homepage', async ({ homepage, page }) => {
-    await test.step(`Navigate to Homepage`, async () => {
+test(`Verify Homepage ${config.name} version`, async ({ homepage, page }) => {
+    await test.step(`Navigate to Homepage ${config.name} version`, async () => {
         await homepage.navigateToHomepage();
     });
-    await test.step(`Check Navigation Visibility`, async () => {
+    await test.step(`Check Navigation Visibility ${config.name} version`, async () => {
         await homepage.verifyNavigationVisibility();
     });
-    await test.step(`Login to Book Store application`, async () => {
+    await test.step(`Check Hero Banner Visibility ${config.name} version`, async () => {
         await homepage.verifyHeroVisibility();
     });
-    await test.step(`Verify User is logged in and navigated to Profile page`, async () => {
+    await test.step(`Check Filters Visibility ${config.name} version`, async () => {
         await homepage.verifyFiltersVisibility();
     });
 });

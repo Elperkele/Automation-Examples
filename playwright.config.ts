@@ -1,15 +1,16 @@
-import { defineConfig, devices } from '@playwright/test';
+import { PlaywrightTestConfig, devices } from '@playwright/test';
 
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
+const environment = process.env.ENV || 'final';
+
+interface TestConfig extends PlaywrightTestConfig {
+    baseURL?: string;
+}
 // require('dotenv').config();
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-export default defineConfig({
+const defaultConfig: PlaywrightTestConfig = {
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -24,7 +25,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://127.0.0.1:3000',
+//      baseURL: 'https://www.google.com',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -74,11 +75,11 @@ export default defineConfig({
   //   url: 'http://127.0.0.1:3000',
   //   reuseExistingServer: !process.env.CI,
   // },
-});
+};
 
 // Środowiska wykorzystywane w pliku package.json do wykonywania testów na odpowiednich stronach
 
-const final: TestConfig = {
+const finalConfig: TestConfig = {
     baseURL: 'https://practicesoftwaretesting.com/#/',
     name: 'final',
     expect: {
@@ -86,10 +87,17 @@ const final: TestConfig = {
     }
 };
 
-const bugs: TestConfig = {
+const bugsConfig: TestConfig = {
     baseURL: 'https://with-bugs.practicesoftwaretesting.com/#/',
     name: 'bugs',
     expect: {
         timeout: 4000
     }
 };
+
+const config: TestConfig = {
+    ...defaultConfig,
+    ...(environment.toLowerCase() === 'final' ? finalConfig : environment.toLowerCase() === 'bugs' ? bugsConfig : {}),
+};
+
+export default config;

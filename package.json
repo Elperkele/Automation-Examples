@@ -5,5 +5,8 @@
   "devDependencies": {
     "@playwright/test": "^1.37.1"
   },
-  "scripts": {}
+  "scripts": {
+    "test:a": "npx playwright test --grep @a",
+    "test:b": "npx playwright test --grep @b"
+  }
 }

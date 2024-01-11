@@ -75,3 +75,21 @@ export default defineConfig({
   //   reuseExistingServer: !process.env.CI,
   // },
 });
+
+// Środowiska wykorzystywane w pliku package.json do wykonywania testów na odpowiednich stronach
+
+const final: TestConfig = {
+    baseURL: 'https://practicesoftwaretesting.com/#/',
+    name: 'final',
+    expect: {
+        timeout: 4000
+    }
+};
+
+const bugs: TestConfig = {
+    baseURL: 'https://with-bugs.practicesoftwaretesting.com/#/',
+    name: 'bugs',
+    expect: {
+        timeout: 4000
+    }
+};

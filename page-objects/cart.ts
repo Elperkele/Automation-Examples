@@ -12,7 +12,7 @@ export class Cart {
         this.Navigation = page.locator(`.navbar`);
     }
 
-    async navigateToHomepage(): Promise<void> {
-            await this.page.goto(`${config.baseURL}`);
+    async navigateToCart(): Promise<void> {
+            await this.page.goto(`${config.baseURL}checkout`);
     }
 }

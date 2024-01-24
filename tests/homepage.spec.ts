@@ -14,4 +14,13 @@ test(`Verify Homepage ${config.name} version`, async ({ homepage, page }) => {
     await test.step(`Check Filters Visibility ${config.name} version`, async () => {
         await homepage.verifyFiltersVisibility();
     });
+    await test.step(`Check Item Container Visibility ${config.name} version`, async () => {
+        await homepage.verifyItemContainerVisibility();
+    });
+    await test.step(`Check Pagination Visibility ${config.name} version`, async () => {
+        await homepage.verifyPaginationVisibility();
+    });
+    await test.step(`Check Footer Visibility ${config.name} version`, async () => {
+        await homepage.verifyFooterVisibility();
+    });
 });

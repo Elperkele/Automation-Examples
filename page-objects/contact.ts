@@ -1,7 +1,7 @@
 import {BrowserContext, Locator, TestInfo, Page, expect } from '@playwright/test';
 import config from '../playwright.config'
 
-export class Cart {
+export class Contact {
     readonly page: Page;
     readonly context: BrowserContext;
     readonly Navigation: Locator;
@@ -12,7 +12,7 @@ export class Cart {
         this.Navigation = page.locator(`.navbar`);
     }
 
-    async navigateToCart(): Promise<void> {
-            await this.page.goto(`${config.baseURL}checkout`);
+    async navigateToContact(): Promise<void> {
+            await this.page.goto(`${config.baseURL}contact`);
     }
 }

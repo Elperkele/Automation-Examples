@@ -2,7 +2,7 @@ import { TestInfo, test as baseTest } from '@playwright/test';
 import { Homepage } from '../../page-objects/homepage';
 import { Login } from '../../page-objects/login';
 import { Product } from '../../page-objects/productpage';
-import { Cart } from '../../page-objects/cart';
+import { Contact } from '../../page-objects/contact';
 import { Basepage } from './actions';
 
 const test = baseTest.extend<{
@@ -10,7 +10,7 @@ const test = baseTest.extend<{
     basepage: Basepage;
     login: Login;
     productpage: Product;
-    cart: Cart;
+    contact: Contact;
 }>({
     homepage: async ({ page, context}, use) => {
         await use(new Homepage(page, context));
@@ -24,8 +24,8 @@ const test = baseTest.extend<{
     productpage: async ({ page, context}, use) => {
         await use(new Product(page, context));
     },
-    cart: async ({ page, context}, use) => {
-        await use(new Cart(page, context));
+    contact: async ({ page, context}, use) => {
+        await use(new Contact(page, context));
     }
 })
 

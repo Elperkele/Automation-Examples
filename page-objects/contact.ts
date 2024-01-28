@@ -23,6 +23,7 @@ export class Contact {
         this.Message = page.locator('//*[@id="message"]');
         this.Attachment = page.locator('//*[@id="attachment"]');
         this.Send = page.locator(`.btnSubmit`);
+        this.Option5 = page.locator('//*[@id="subject"]/option[5]');
     }
 
     async navigateToContact(): Promise<void> {
@@ -38,15 +39,17 @@ export class Contact {
             await this.Email.fill('student@uczelnia.pl');
     }
     async openDroplist(): Promise<void> {
-            await this.Dropdown.selectOption({ label: 'payments'});
+            await this.Dropdown.selectOption('payments');
     }
     async fillMessage(): Promise<void> {
-            await this.Email.fill('This is a test message. Please disregard');
+            await this.Message.fill('This is a test message. Please disregard - more characters to meet 50 char cap');
     }
     async addAttachment(): Promise<void> {
-            await this.Attachment.uploadFile('../tests/utilities.test.txt');
+            await this.Attachment.click();
+            await this.Attachment.setInputFiles('tests/utilities/test.txt');
     }
     async clickSend(): Promise<void> {
+            await this.page.screenshot({ path: 'test-results/filledContactForm.png', fullPage: true });
             await this.Send.click();
     }
 }

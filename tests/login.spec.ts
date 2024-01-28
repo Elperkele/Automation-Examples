@@ -1,4 +1,4 @@
-import test from './utilities/base';
+import test from './utilities/factory';
 import config from '../playwright.config'
 
 test(`Verify Login page ${config.name} version`, async ({ login, page }) => {

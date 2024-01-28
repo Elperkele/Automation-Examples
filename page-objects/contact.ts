@@ -46,6 +46,7 @@ export class Contact {
     }
     async addAttachment(): Promise<void> {
             await this.Attachment.click();
+            await this.page.waitForLoadState();
             await this.Attachment.setInputFiles('tests/utilities/test.txt');
     }
     async clickSend(): Promise<void> {

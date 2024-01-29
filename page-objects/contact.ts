@@ -11,7 +11,6 @@ export class Contact {
     readonly Message: Locator;
     readonly Attachment: Locator;
     readonly Send: Locator;
-    readonly Option5: Locator;
 
     constructor(page: Page, context: BrowserContext) {
         this.page = page;
@@ -23,7 +22,6 @@ export class Contact {
         this.Message = page.locator('//*[@id="message"]');
         this.Attachment = page.locator('//*[@id="attachment"]');
         this.Send = page.locator(`.btnSubmit`);
-        this.Option5 = page.locator('//*[@id="subject"]/option[5]');
     }
 
     async navigateToContact(): Promise<void> {
@@ -45,7 +43,6 @@ export class Contact {
             await this.Message.fill('This is a test message. Please disregard - more characters to meet 50 char cap');
     }
     async addAttachment(): Promise<void> {
-            //await this.Attachment.click();
             await this.Attachment.setInputFiles('tests/utilities/test.txt');
     }
     async clickSend(): Promise<void> {

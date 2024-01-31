@@ -24,7 +24,7 @@ export class Product {
     }
 
     async navigateToProduct(): Promise<void> {
-        await this.page.goto(`${config.baseURL}product/01HNB2KXN9P0BHEK680EZYKF9H`);
+        await this.page.goto(`${config.baseURL}product/01HNG3ZFTTV5FEB5D12SN1C5KZ`);
     }
     async verifyProductImage(): Promise<void> {
         await expect.soft(this.ProductImage).toBeVisible();

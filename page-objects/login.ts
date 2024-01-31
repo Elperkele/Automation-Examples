@@ -15,7 +15,9 @@ export class Login {
         this.Login = page.getByPlaceholder('Your E-mail *');
         this.Password = page.getByPlaceholder('Your Password *');
         this.LoginButton = page.locator(`.btnSubmit`);
-        this.ErrorPopup = page.locator(`//html/body/app-root/div/app-login/div/div/div/form/div[2]`);
+        this.ErrorEmptyName = page.getByText(` E-mail is required. `);
+        this.ErrorEmptyPassword = page.getByText(` Password is required. `);
+        this.ErrorWrongFormat = page.getByText(` E-mail format is invalid. `);
     }
 
     async navigateToLogin(): Promise<void> {
@@ -23,13 +25,28 @@ export class Login {
         await this.page.waitForTimeout(3000);
     }
     async inputCredentialsWrongFormat(): Promise<void> {
-        await this.Login.fill('test');
-        await this.Password.fill('test2');
+        await this.Login.fill('Vistula');
+        await this.Password.fill('Vistula1');
+    }
+    async inputCredentialsInvalid(): Promise<void> {
+        await this.Login.fill('test@vistula.pl');
+        await this.Password.fill('Vistula');
+    }
+    async inputCredentialsValid(): Promise<void> {
+        await this.Login.fill('customer@practicesoftwaretesting.com');
+        await this.Password.fill('welcome01');
     }
     async clickLogin(): Promise<void> {
         await this.LoginButton.click();
     }
-    async checkErrorPopup(): Promise <void> {
-        await expect(this.ErrorPopup).toBeVisible();
+    async checkErrorPopupEmpty(): Promise <void> {
+        await expect(this.ErrorEmptyName).toBeVisible();
+        await expect(this.ErrorEmptyPassword).toBeVisible();
+    }
+    async checkErrorPopupFormat(): Promise <void> {
+        await expect(this.ErrorWrongFormat).toBeVisible();
+    }
+    async checkPostLoginURL(): Promise <void> {
+        await expect(this.page).toHaveURL(`${config.baseURL}account`);
     }
 }

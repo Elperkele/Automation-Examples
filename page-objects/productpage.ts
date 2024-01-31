@@ -18,13 +18,13 @@ export class Product {
         this.ProductImage = page.locator(`//html/body/app-root/div/app-detail/div[1]/div[1]/figure/div/img`);
         this.ProductTitle = page.locator('//html/body/app-root/div/app-detail/div[1]/div[2]/h1');
         this.AddItemButton = page.locator(`.btn btn-secondary`);
-        this.BuyButton = page.locator(`.btn-success btn`);
+        this.BuyButton = page.locator("[id='btn-add-to-cart']");
         this.RelatedSection = page.locator('//html/body/app-root/div/app-detail/div[2]');
-        this.ItemCounter = page.locator(`.input-group quantity`);
+        this.ItemCounter = page.locator("[id='btn-increase-quantity']");
     }
 
     async navigateToProduct(): Promise<void> {
-        await this.page.goto(`${config.baseURL}product/01HNG3ZFTTV5FEB5D12SN1C5KZ`);
+        await this.page.goto(`${config.baseURL}product/01HNG7DB3H45RXK7J1YK33RNM6`);
     }
     async verifyProductImage(): Promise<void> {
         await expect.soft(this.ProductImage).toBeVisible();
@@ -37,7 +37,7 @@ export class Product {
     }
     async verifyBuyButton(): Promise<void> {
         await expect(this.BuyButton).toBeVisible();
-        await this.BuyButton.click();
+        await this.BuyButton.click({trial: true});
     }
     async verifyRelatedSection(): Promise<void> {
         await expect(this.RelatedSection).toBeVisible();

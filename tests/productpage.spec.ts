@@ -14,8 +14,20 @@ test(`Verify Product page ${config.name} version`, async ({ productpage, page })
     await test.step(`Check Item counter visibility ${config.name} version`, async () => {
         await productpage.verifyItemCounter();
     });
-    await test.step(`Check buy button visibility and if it is clickable ${config.name} version`, async () => {
+    await test.step(`Check Item cart icon visibility ${config.name} version`, async () => {
+        await productpage.checkCartInvisible();
+    });
+    await test.step(`Click on add item button ${config.name} version`, async () => {
+        await productpage.addItem();
+    });
+    await test.step(`Check buy button visibility ${config.name} version`, async () => {
         await productpage.verifyBuyButton();
+    });
+    await test.step(`Click but button ${config.name} version`, async () => {
+            await productpage.buyButtonClick();
+    });
+    await test.step(`Check Item cart icon visibility ${config.name} version`, async () => {
+        await productpage.checkCartVisible();
     });
     await test.step(`Check related section visibility ${config.name} version`, async () => {
         await productpage.verifyRelatedSection();

@@ -1,8 +1,9 @@
 import { test, expect } from '@playwright/test';
+import config from '../playwright.config'
 
 test('Oder a product from the site', async ({ page }, testInfo) => {
   await test.step('Navigate to homepage', async () => {
-    await page.goto('https://practicesoftwaretesting.com/#/');
+    await page.goto(`${config.baseURL}`);
   });
   await test.step('Open product page by selecting the first available product', async () => {
     await page.locator(`//html/body/app-root/div/app-overview/div[3]/div[2]/div[1]/a[1]`).click();

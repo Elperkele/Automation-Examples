@@ -24,7 +24,7 @@ test(`Verify Product page ${config.name} version`, async ({ productpage, page })
         await productpage.verifyBuyButton();
     });
     await test.step(`Click but button ${config.name} version`, async () => {
-            await productpage.buyButtonClick();
+        await productpage.buyButtonClick();
     });
     await test.step(`Check Item cart icon visibility ${config.name} version`, async () => {
         await productpage.checkCartVisible();

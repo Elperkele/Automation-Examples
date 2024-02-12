@@ -1,6 +1,9 @@
 import {BrowserContext, Locator, TestInfo, Page, expect } from '@playwright/test';
 import config from '../playwright.config'
 
+const UserLogin: string = 'customer@practicesoftwaretesting.com';
+const UserPassword: string = 'welcome01';
+
 export class Login {
     readonly page: Page;
     readonly context: BrowserContext;
@@ -33,8 +36,8 @@ export class Login {
         await this.Password.fill('Vistula');
     }
     async inputCredentialsValid(): Promise<void> {
-        await this.Login.fill('customer@practicesoftwaretesting.com');
-        await this.Password.fill('welcome01');
+        await this.Login.fill(UserLogin);
+        await this.Password.fill(UserPassword);
     }
     async clickLogin(): Promise<void> {
         await this.LoginButton.click();

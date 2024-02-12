@@ -22,9 +22,9 @@ export class Login {
         this.Login = page.getByPlaceholder('Your E-mail *');
         this.Password = page.getByPlaceholder('Your Password *');
         this.LoginButton = page.locator(`.btnSubmit`);
-        this.ErrorEmptyName = page.getByText(` E-mail is required. `);
-        this.ErrorEmptyPassword = page.getByText(` Password is required. `);
-        this.ErrorWrongFormat = page.getByText(` E-mail format is invalid. `);
+        this.ErrorEmptyName = page.getByText(` E-mail is required. `,{ exact: true });
+        this.ErrorEmptyPassword = page.getByText(` Password is required. `,{ exact: true });
+        this.ErrorWrongFormat = page.getByText(` E-mail format is invalid. `,{ exact: true });
     }
 
     async navigateToLogin(): Promise<void> {

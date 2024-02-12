@@ -3,6 +3,10 @@ import config from '../playwright.config'
 
 const UserLogin: string = 'customer@practicesoftwaretesting.com';
 const UserPassword: string = 'welcome01';
+const WrongFormatLogin: string = 'Vistula';
+const WrongFormatPassword: string = 'Vistula1';
+const IncorrectLogin: string = 'test@vistula.pl';
+const IncorrectPassword: string = 'student';
 
 export class Login {
     readonly page: Page;
@@ -28,12 +32,12 @@ export class Login {
         await this.page.waitForTimeout(3000);
     }
     async inputCredentialsWrongFormat(): Promise<void> {
-        await this.Login.fill('Vistula');
-        await this.Password.fill('Vistula1');
+        await this.Login.fill(WrongFormatLogin);
+        await this.Password.fill(WrongFormatPassword);
     }
     async inputCredentialsInvalid(): Promise<void> {
-        await this.Login.fill('test@vistula.pl');
-        await this.Password.fill('Vistula');
+        await this.Login.fill(IncorrectLogin);
+        await this.Password.fill(IncorrectPassword);
     }
     async inputCredentialsValid(): Promise<void> {
         await this.Login.fill(UserLogin);

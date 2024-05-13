@@ -23,9 +23,6 @@ jobs:
           SECRETLOGIN: ${{ secrets.SECRETLOGIN }}
           SECRETPASS: ${{ secrets.SECRETPASS }}
 
-      - name: Set workflow run name
-        run: echo "::set-env name=ACTION_RUN_NAME::${{ github.event.inputs.run_name }}"
-
       - name: Display Custom Run Name
         run:
-        echo "Custom Run Name: ${{ env.ACTION_RUN_NAME }}"
+          echo "Custom Run Name: ${{ github.event.inputs.run_name }}"

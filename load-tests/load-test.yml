@@ -25,8 +25,8 @@ config:
     threshold: 75
   ensure:
     thresholds:
-      - http.response_time.p99: 100
-      - http.response_time.p95: 75
+      - http.response_time.p99: 75
+      - http.response_time.p95: 50
 scenarios:
   - flow:
       - loop:

@@ -31,5 +31,5 @@ scenarios:
   - flow:
       - loop:
           - get:
-              url: '/basic-auth/{{ $processEnvironment.SECRETLOGIN }}/{{ $processEnvironment.SECRETPASS }}'
+              url: 'basic-auth/{{ $processEnvironment.SECRETLOGIN }}/{{ $processEnvironment.SECRETPASS }}'
         count: 1

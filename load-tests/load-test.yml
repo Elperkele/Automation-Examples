@@ -1,7 +1,7 @@
 config:
   # This is a test server run by team Artillery
   # It's designed to be highly scalable
-  target: https://$SECRETLOGIN.$SECRETPASS@httpbin.org/basic-auth/foo/bar
+  target: https://$SECRETLOGIN.$SECRETPASS@httpbin.org
   phases:
     - duration: 60
       arrivalRate: 1
@@ -31,5 +31,5 @@ scenarios:
   - flow:
       - loop:
           - get:
-              url: ''
+              url: '/basic-auth/foo/bar'
         count: 100

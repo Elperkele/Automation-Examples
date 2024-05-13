@@ -5,6 +5,10 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      run_name:
+        description: 'Enter a custom name for the workflow run'
+        required: true
 
 jobs:
   artillery:

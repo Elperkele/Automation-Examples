@@ -2,10 +2,7 @@ name: Artillery test on Demand
 
 on:
   workflow_dispatch:
-    inputs:
-      run_name:
-        description: 'Enter a custom name for the workflow run'
-        required: true
+
 jobs:
   artillery:
     runs-on: ubuntu-latest
@@ -22,6 +19,3 @@ jobs:
           ARTILLERY_CLOUD_API_KEY: ${{ secrets.APIKEY }}
           SECRETLOGIN: ${{ secrets.SECRETLOGIN }}
           SECRETPASS: ${{ secrets.SECRETPASS }}
-
-      - name: Display Custom Run Name
-        run:  ${{ github.event.inputs.run_name }}"

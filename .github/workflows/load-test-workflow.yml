@@ -24,5 +24,4 @@ jobs:
           SECRETPASS: ${{ secrets.SECRETPASS }}
 
       - name: Display Custom Run Name
-        run:
-          echo "Custom Run Name: ${{ github.event.inputs.run_name }}"
+        run:  ${{ github.event.inputs.run_name }}"

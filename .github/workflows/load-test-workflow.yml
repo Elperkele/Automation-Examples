@@ -17,4 +17,4 @@ jobs:
       - name: Execute load tests
         uses: artilleryio/action-cli@v1
         with:
-          command: run load-tests/load-test.yml --record --$APIKEY
+          command: run load-tests/load-test.yml --record --key $APIKEY

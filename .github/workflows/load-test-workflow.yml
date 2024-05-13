@@ -20,3 +20,5 @@ jobs:
           command: run load-tests/load-test.yml --record
         env:
           ARTILLERY_CLOUD_API_KEY: ${{ secrets.APIKEY }}
+          SECRETLOGIN: ${{ secrets.SECRETLOGIN }}
+          SECRETPASS: ${{ secrets.SECRETPASS }}

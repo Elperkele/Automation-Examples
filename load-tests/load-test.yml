@@ -31,5 +31,5 @@ scenarios:
   - flow:
       - loop:
           - get:
-              url: '/basic-auth/{{ $secrets.SECRETLOGIN }}/{{ $secrets.SECRETPASS }}'
+              url: '/basic-auth/${{ secrets.SECRETLOGIN }}/${{ secrets.SECRETPASS }}'
         count: 1

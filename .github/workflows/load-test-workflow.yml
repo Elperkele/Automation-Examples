@@ -1,4 +1,4 @@
-name: Custom Run Name Workflow
+name: Artillery test on Demand
 
 on:
   workflow_dispatch:
@@ -6,7 +6,6 @@ on:
       run_name:
         description: 'Enter a custom name for the workflow run'
         required: true
-
 jobs:
   artillery:
     runs-on: ubuntu-latest
@@ -24,6 +23,9 @@ jobs:
           SECRETLOGIN: ${{ secrets.SECRETLOGIN }}
           SECRETPASS: ${{ secrets.SECRETPASS }}
 
-      - name: Print Custom Run Name
+      - name: Set workflow run name
+        run: echo "::set-env name=ACTION_RUN_NAME::${{ github.event.inputs.run_name }}"
+
+      - name: Display Custom Run Name
         run:
-          echo "Custom Run Name: ${{ github.event.inputs.run_name }}"
+        echo "Custom Run Name: ${{ env.ACTION_RUN_NAME }}"

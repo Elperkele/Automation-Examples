@@ -33,6 +33,6 @@ scenarios:
           - get:
               url: '/basic-auth/foo/bar'
               auth:
-                user: "${env.SECRETLOGIN}"
-                pass: "${env.SECRETPASS}"
+                user: foo
+                pass: bar
         count: 1

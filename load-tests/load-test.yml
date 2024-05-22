@@ -3,18 +3,16 @@ config:
   # It's designed to be highly scalable
   target: "https://httpbin.org"
   phases:
-    - duration: 60
-      arrivalRate: 1
-      rampTo: 5
-      name: Warm up phase
-#    - duration: 60
-#      arrivalRate: 5
-#      rampTo: 10
-#      name: Ramp up load
-#    - duration: 30
-#      arrivalRate: 10
-#      rampTo: 30
-#      name: Spike phase
+    - duration: 3
+      arrivalRate: 10
+      name: Phase 1 - 10 VU/s for 30 seconds
+    - duration: 3
+      arrivalCount: 100
+      name: Phase 2 - 100 VU over 30 seconds (approx. 3VU/s)
+    - duration: 3
+      arrivalRate: 10
+      rampTo: 200
+      name: Ramp up load - linear growth (approx. 6VU/s)
   # Load & configure a couple of useful plugins
   # https://docs.art/reference/extensions
   plugins:
@@ -35,4 +33,11 @@ scenarios:
               auth:
                 user: foo
                 pass: bar
+        count: 1
+      - loop:
+          - get:
+              url: '/basic-auth/foo/bar'
+              auth:
+                user: wrong
+                pass: credentials
         count: 1

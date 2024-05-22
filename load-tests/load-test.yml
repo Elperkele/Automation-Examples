@@ -1,30 +1,29 @@
 config:
-  # This is a test server run by team Artillery
-  # It's designed to be highly scalable
   target: "https://httpbin.org"
   phases:
     - duration: 30
       arrivalRate: 10
-      name: Phase 1 - 10 VU/s for 30 seconds
+      name: Phase 1 - 10 VU/s for 30 seconds - 300 VU total
     - duration: 30
       arrivalCount: 100
-      name: Phase 2 - 100 VU over 30 seconds (approx. 3VU/s)
+      name: Phase 2 - 100 VU total over 30 seconds (approx. 3VU/s)
     - duration: 30
       arrivalRate: 10
       rampTo: 200
-      name: Ramp up load - linear growth (approx. 6VU/s)
-  # Load & configure a couple of useful plugins
-  # https://docs.art/reference/extensions
+      name: Ramp up load - linear growth (approx. 6VU/s) - (10+200)/2= 105VU/s * 30  = 3150 VU total
   plugins:
     ensure: {}
     apdex: {}
-    metrics-by-endpoint: {}
+    metrics-by-endpoint: {} #The metrics-by-endpoint plugin provides detailed metrics for each endpoint separately. This helps in understanding the performance of individual API endpoints rather than aggregated results
   apdex:
     threshold: 500
+    #Requests with response times less than or equal to 500 milliseconds are considered satisfactory
+    #Requests with response times up to four times the threshold (2000 milliseconds) are considered tolerable
+    #Requests with response times exceeding 2000 milliseconds are considered frustrating
   ensure:
     thresholds:
-      - http.response_time.p99: 1200
-      - http.response_time.p95: 750
+      - http.response_time.p99: 1200 #It means that 99% of the requests should have a response time of 1200 milliseconds (1.2 seconds) or less
+      - http.response_time.p95: 750 #It means that 95% of the requests should have a response time of 750 milliseconds (0.75 seconds) or less
 scenarios:
   - flow:
       - loop:

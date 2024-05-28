@@ -12,6 +12,9 @@ config:
       rampTo: 200
       name: Ramp up load - linear growth (approx. 6VU/s) - (10+200)/2= 105VU/s * 30  = 3150 VU total
   plugins:
+#    slack:
+#      webhookUrl: "here goes url"
+    expect: {}
     ensure: {}
     apdex: {}
     metrics-by-endpoint: {} #The metrics-by-endpoint plugin provides detailed metrics for each endpoint separately. This helps in understanding the performance of individual API endpoints rather than aggregated results
@@ -31,6 +34,7 @@ scenarios:
               url: '/basic-auth/foo/bar'
               expect:
                 - statusCode: 200
+                - notStatusCode: 401
               auth:
                 user: foo
                 pass: bar
@@ -39,7 +43,7 @@ scenarios:
           - get:
               url: '/basic-auth/foo/bar'
               expect:
-                - statusCode: 200
+                - notStatusCode: 200
               auth:
                 user: wrong
                 pass: credentials

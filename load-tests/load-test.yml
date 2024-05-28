@@ -34,7 +34,6 @@ scenarios:
               url: '/basic-auth/foo/bar'
               expect:
                 - statusCode: 200
-                - notStatusCode: 401
               auth:
                 user: foo
                 pass: bar
@@ -42,7 +41,9 @@ scenarios:
       - loop:
           - get:
               url: '/basic-auth/foo/bar'
+              expect:
+                - statusCode: 200
               auth:
                 user: wrong
                 pass: credentials
-        count: 1
+        count: 2

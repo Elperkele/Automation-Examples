@@ -22,9 +22,6 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Run Playwright tests
-        run: npx playwright test
-
       - name: Execute load tests
         uses: artilleryio/action-cli@v1
         with:

@@ -35,14 +35,14 @@ scenarios:
               expect:
                 - statusCode: 200
               auth:
-                user: foo
-                pass: bar
+                user: '{{ $env.SECRETLOGIN }}'
+                pass: '{{ $env.SECRETPASS }}'
         count: 1
       - loop:
           - get:
               url: '/basic-auth/foo/bar'
               expect:
-                - statusCode: 200
+                - statusCode: 401
               auth:
                 user: wrong
                 pass: credentials

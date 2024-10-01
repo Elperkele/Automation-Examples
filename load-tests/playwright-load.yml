@@ -1,7 +1,8 @@
 config:
   target: "https://google.com"
   engines:
-    playwright: {}
+    playwright:
+      traces: true
   processor: './load-scenario.ts'
   phases:
     - duration: 3

@@ -1,7 +1,8 @@
 config:
   target: "https://practicesoftwaretesting.com"
   engines:
-    playwright: {}
+    playwright:
+      traces: true
   processor: '../page-objects/homepage.ts'
   phases:
     - duration: 3
